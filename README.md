@@ -27,10 +27,10 @@ The next 4 bits usually determine the opcode, with the exception being function 
 
 | First byte | Second byte | Notes | 
 | ---------- | ----------- | ----------- |
-| ```00 00 OOOO```     | ```RRRR RRRR```   |  This instruction is the only instruction that is fixed size and is also the only reason that I have 16 registers.
+| ```00 00 OOOO```         | ```RRRR RRRR``` |  This instruction is the only instruction that is fixed size and is also the only reason that I have 16 registers.
 | ```01 SS OOOO```     | ```RRRR IIII``` | To have bigger intermediates, change the instruction size.
-| ```10 SS OOOO```    | ``` PPPPPPPP``` | Size of instruction can be extended to accomodate times when you want to have code longer than 255 instructions.
-| ```11 SS M PPPP``` | ```PPPPPPPP```  | Mode is 0 for call and 1 for ret. Above note still applies
+| ```10 SS OOOO```     | ``` PPPPPPPP``` | Size of instruction can be extended to accomodate times when you want to have code longer than 255 instructions.
+| ```11 SS M PPPP```   | ```PPPPPPPP```  | Mode is 0 for call and 1 for ret. Above note still applies
 
 With the instructions out of the way, we will now be talking about computation opcodes.
 Computation opcodes are separated into the memory unit, and the arithmetic unit, indicated by the MSB of the opcode. Some but not all opcodes set the 4 flags. Unless specified, all ALU opcodes that don't specify a change to a flag will have the flags not be changed.
@@ -87,7 +87,7 @@ Jumps are based on the flags. The middle column represents the equivalent instru
 | `1100`  | `Always`        | `1`             |
 | `1101`  | `Never`           |  `0`                       |
 | `1110`  | `unsigned >`           | `C && !Z`                       |
-| `1111`  | `unsigned <=`           | `!C || Z`                       |
+| `1111`  | `unsigned <=`           | `!C \|\| Z`                       |
 
 
 # Regarding reading own program memory
